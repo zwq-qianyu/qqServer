@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Iterator;
+import qq.server.view.ControlPanel;
 
 public class ClientConSeverTread extends Thread implements MessageType {
     Socket s;
@@ -24,6 +25,7 @@ public class ClientConSeverTread extends Thread implements MessageType {
 
     //当有一个新的用户上线时，进程通知其他人
     public void notifyOthers(String who){
+        ControlPanel.initUserList();
         //得到所有在线人的进程
         HashMap hm = ManageClientTreads.hm;
         Iterator it = hm.keySet().iterator();
@@ -92,6 +94,7 @@ public class ClientConSeverTread extends Thread implements MessageType {
                 }
                 else if(ms.getMesType().equals(MessageType.message_off_line)){
                     ManageClientTreads.delClientTread(ms.getSender());  //将下线用户从hm哈希表中移除
+                    ControlPanel.lstUser.remove(ms.getSender());
                     System.out.println(ms.getSender()+" 已下线");
                     //得到所有在线人的进程，告诉他们该用户下线了
                     HashMap hm = ManageClientTreads.hm;
