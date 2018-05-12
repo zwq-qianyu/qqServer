@@ -9,9 +9,13 @@ import java.net.Socket;
 import qq.common.*;
 import java.awt.*;
 
-public class MyQqServer {
+public class MyQqServer extends Thread{
     //private List userList = new java.awt.List();
     public MyQqServer(){
+
+    }
+
+    public void run(){
         try {
             //在9000端口监听
             System.out.println("服务器正在9000端口监听...");

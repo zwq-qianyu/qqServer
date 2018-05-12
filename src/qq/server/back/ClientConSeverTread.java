@@ -46,9 +46,33 @@ public class ClientConSeverTread extends Thread implements MessageType {
         }
     }
 
+    //当群发消息时，进程通知所有在线人员
+    public static void notifyMesToOthers(String mes){
+        //得到所有在线人的进程
+        HashMap hm = ManageClientTreads.hm;
+        Iterator it = hm.keySet().iterator();
 
+        while(it.hasNext()){
+            Message m = new Message();
+            m.setCon(mes);
+            m.setMesType(MessageType.message_to_all);
 
+            //获得在线人的id
+            String onlie_user_id = it.next().toString();
+            try{
+                ObjectOutputStream oos = new ObjectOutputStream
+                        (ManageClientTreads.getClientTread(onlie_user_id).s.getOutputStream());
+                m.setGetter(onlie_user_id);
+                oos.writeObject(m);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 
+    public Socket getS() {
+        return s;
+    }
 
     public void run(){
         while(true){
