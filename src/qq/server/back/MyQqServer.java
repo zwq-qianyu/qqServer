@@ -7,8 +7,10 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import qq.common.*;
+import java.awt.*;
 
 public class MyQqServer {
+    //private List userList = new java.awt.List();
     public MyQqServer(){
         try {
             //在9000端口监听
@@ -26,9 +28,23 @@ public class MyQqServer {
                 Message m = new Message();
 
                 if(u.getPasswd().equals("123456")){
+
                     m.setMesType("1");
+                    //userList.add(u.getUserId());
+                    //m.setUserlist(userList);   //更新登录用户列表
                     oos.writeObject(m);
+
                     System.out.println("连接成功");
+
+                    //这里单开一个线程，让它与该客户端通讯
+                    ClientConSeverTread ccst = new ClientConSeverTread(s);
+                    //将线程添加到Hashmap中
+                    ManageClientTreads.addClientTread(u.getUserId(),ccst);
+                    //启动与该客户端通讯的线程
+                    ccst.start();
+
+                    //通知其他用户有新用户上线
+                    ccst.notifyOthers(u.getUserId());
                 }
                 else{
                     System.out.println("密码错误");
@@ -38,7 +54,6 @@ public class MyQqServer {
                     s.close();
                 }
             }
-
 
         }catch (Exception e){
             e.printStackTrace();
