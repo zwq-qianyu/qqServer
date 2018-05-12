@@ -58,6 +58,8 @@ public class ControlPanel extends JFrame implements ActionListener {
         jtf.setFont(new Font("宋体",Font.PLAIN,25));
         jta.setFont(new Font("宋体",Font.PLAIN,25));
         jta.setBackground(Color.cyan);
+        jta.setLineWrap(true);        //激活自动换行功能
+        jta.setWrapStyleWord(true);            // 激活断行不断字功能
         jbt.addActionListener(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(400,300);

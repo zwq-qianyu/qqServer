@@ -92,9 +92,33 @@ public class ClientConSeverTread extends Thread implements MessageType {
                     ObjectOutputStream oos = new ObjectOutputStream(ccst.s.getOutputStream());
                     oos.writeObject(ms);
                 }
+                else if(ms.getMesType().equals(MessageType.message_group_chat)){
+                    //System.out.println(ms.getSender()+" 群发了一条消息");
+                    //得到所有在线人的进程，将群发消息发给他们
+                    HashMap hm = ManageClientTreads.hm;
+                    Iterator it = hm.keySet().iterator();
+
+                    while(it.hasNext()){
+                        Message m = new Message();
+                        m.setCon(ms.getSender()+": "+ms.getCon());
+                        m.setMesType(MessageType.message_group_chat);
+
+                        //获得在线人的id
+                        String onlie_user_id = it.next().toString();
+                        try{
+                            ObjectOutputStream oos = new ObjectOutputStream
+                                    (ManageClientTreads.getClientTread(onlie_user_id).s.getOutputStream());
+                            m.setGetter(onlie_user_id);
+                            //System.out.println(ms.getSender()+"群发说："+ms.getCon());
+                            oos.writeObject(m);
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
                 else if(ms.getMesType().equals(MessageType.message_off_line)){
                     ManageClientTreads.delClientTread(ms.getSender());  //将下线用户从hm哈希表中移除
-                    ControlPanel.lstUser.remove(ms.getSender());
+                    ControlPanel.lstUser.remove(ms.getSender());        //将用户从服务器端的用户列表中去除
                     System.out.println(ms.getSender()+" 已下线");
                     //得到所有在线人的进程，告诉他们该用户下线了
                     HashMap hm = ManageClientTreads.hm;
