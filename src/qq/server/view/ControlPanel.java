@@ -65,7 +65,7 @@ public class ControlPanel extends JFrame implements ActionListener {
             //发送给所有在线用户
             ClientConSeverTread.notifyMesToOthers(info);
             //清空输入框
-            //this.jtf.setText("");
+            this.jtf.setText("");
         }
     }
 
