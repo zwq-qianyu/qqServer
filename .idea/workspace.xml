@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16325f92-65d5-44bc-a321-dff03cec4d50" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/qq/server/back/ClientConSeverTread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qq/server/back/ClientConSeverTread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qq/server/tools/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qq/server/tools/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qq/server/view/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qq/server/view/ControlPanel.java" afterDir="false" />
-    </list>
+    <list default="true" id="16325f92-65d5-44bc-a321-dff03cec4d50" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -347,16 +343,15 @@
       <workItem from="1526021306059" duration="98000" />
       <workItem from="1526086016900" duration="1574000" />
       <workItem from="1526089346935" duration="9011000" />
-      <workItem from="1526103404301" duration="8980000" />
+      <workItem from="1526103404301" duration="9756000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54623000" />
+    <option name="totallyTimeSpent" value="55399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -367,7 +362,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.328877" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27314815" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27314815" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
